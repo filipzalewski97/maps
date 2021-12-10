@@ -612,7 +612,7 @@ class MapboxMapController: NSObject, FlutterPlatformView, MGLMapViewDelegate, Ma
             guard let bytes = arguments["bytes"] as? FlutterStandardTypedData else { return }
             guard let sdf = arguments["sdf"] as? Bool else { return }
             guard let data = bytes.data as? Data else{ return }
-            guard let image = UIImage(data: data) else { return }
+            guard let image = UIImage(data: data, UIScreen.main.scale) else { return }
             if (sdf) {
                 self.mapView.style?.setImage(image.withRenderingMode(.alwaysTemplate), forName: name)
             } else {
